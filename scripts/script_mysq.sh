@@ -6,3 +6,5 @@ debconf-set-selections <<< 'mysql-server mysql-server/root_password_again passwo
 sudo apt update
 sudo apt install mysql-server -y
 sudo systemctl start mysql.service
+
+sudo mysql -h localhost -u root -proot < /home/vagrant/init.sql
