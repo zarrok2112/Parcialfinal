@@ -1,16 +1,23 @@
-# To Run application
+# Trabajo Final - V.alejandroMonsalve
 
-## Start and SSH into Vagrant VM 
+## Maquinas usadas
 
-```
-vagrant up
-vagrant ssh servidorWeb
-```
 
-## Run the webApp
+| Nombre | ip |
+|--------------|--------------|
+| master  | 192.168.50.10    |
+| slave1    | 192.168.50.11    |
+| slave2   | 192.168.50.12   |
+| slave3  | 192.168.50.13    |
+| cliente    | 192.168.50.2   |
 
-```
-cd /home/vagrant/webapp
-export FLASK_APP=run.py
-/usr/local/bin/flask run --host=0.0.0.0
-```
+
+## Instalaciones 
+
+Master:
+  - Nginx
+  - MySQL Server
+  
+Slaves:
+  - MySQL Server
+
