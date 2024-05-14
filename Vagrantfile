@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
     master.vm.box = "bento/ubuntu-22.04"
     master.vm.network :private_network, ip: "192.168.60.3"
     master.vm.provision "shell", path: "./scripts/script_mysq.sh"
-    master.vm.provision "shell", inline: "./scripts/script_mysq.sh"
+    master.vm.provision "shell", path: "./scripts/script_ngix.sh"
     #master.vm.provision "shell", path: "script.sh"
     #master.vm.provision "file", source: "webapp", destination: "/home/vagrant/webapp"
     #master.vm.provision "file", source: "init.sql", destination: "/home/vagrant/init.sql"
