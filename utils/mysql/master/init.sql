@@ -1,20 +1,21 @@
--- Crear la base de datos y usarla
-CREATE DATABASE knights;
+-- Crear la base de datos si no existe y usarla
+CREATE DATABASE IF NOT EXISTS knights;
 USE knights;
 
--- Crear la tabla e insertar datos
-CREATE TABLE favorite_colors (
+-- Crear la tabla si no existe e insertar datos
+CREATE TABLE IF NOT EXISTS favorite_colors (
   name VARCHAR(20),
   color VARCHAR(10)
 );
 
-INSERT INTO favorite_colors (name, color)
+-- Insertar datos solo si no existen
+INSERT IGNORE INTO favorite_colors (name, color)
 VALUES
   ('Lancelot', 'blue'),
   ('Galahad', 'yellow');
 
 -- Crear el usuario de replicación y otorgar privilegios
-CREATE USER 'repl'@'%' IDENTIFIED BY 'password';
+CREATE USER IF NOT EXISTS 'repl'@'%' IDENTIFIED BY 'password';
 GRANT REPLICATION SLAVE ON *.* TO 'repl'@'%';
 FLUSH PRIVILEGES;
 

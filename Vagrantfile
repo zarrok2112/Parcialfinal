@@ -1,14 +1,19 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
 Vagrant.configure("2") do |config|
+  # Configuración del maestro
   config.vm.define :master do |master|
     master.vm.box = "bento/ubuntu-22.04"
     master.vm.network :private_network, ip: "192.168.60.4"
     master.vm.hostname = "master"
-    master.vm.provision "file", source: "./utils/mysql/master/init.sql", destination: "/home/vagrant/init.sql"
+    master.vm.provision "file", source: "./utils/mysql/init.sql", destination: "/home/vagrant/init.sql"
     master.vm.provision "file", source: "./utils/mysql/master/my.cnf", destination: "/home/vagrant/my.cnf"
     master.vm.provision "shell", path: "./scripts/script_mysq.sh"
     master.vm.provision "shell", path: "./scripts/script_master.sh"
   end
 
+  # Configuración del esclavo 1
   config.vm.define :slave1 do |slave1|
     slave1.vm.box = "bento/ubuntu-22.04"
     slave1.vm.network :private_network, ip: "192.168.60.5"
@@ -19,6 +24,7 @@ Vagrant.configure("2") do |config|
     slave1.vm.provision "shell", path: "./scripts/script_slave.sh"
   end
 
+  # Configuración del esclavo 2
   config.vm.define :slave2 do |slave2|
     slave2.vm.box = "bento/ubuntu-22.04"
     slave2.vm.network :private_network, ip: "192.168.60.6"
@@ -29,9 +35,10 @@ Vagrant.configure("2") do |config|
     slave2.vm.provision "shell", path: "./scripts/script_slave.sh"
   end
 
+  # Configuración del servidor web
   config.vm.define :webserver do |webserver|
     webserver.vm.box = "bento/ubuntu-22.04"
     webserver.vm.network :private_network, ip: "192.168.60.3"
-    webserver.vm.provision "shell", path: "./scripts/script_ngix.sh"
+    webserver.vm.provision "shell", path: "./scripts/script_nginx.sh"
   end
 end
