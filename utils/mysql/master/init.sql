@@ -1,18 +1,29 @@
--- Crear la base de datos si no existe y usarla
-CREATE DATABASE IF NOT EXISTS knights;
-USE knights;
+CREATE DATABASE myflaskapp;
+use myflaskapp;
 
--- Crear la tabla si no existe e insertar datos
-CREATE TABLE IF NOT EXISTS favorite_colors (
-  name VARCHAR(20),
-  color VARCHAR(10)
+CREATE TABLE users (
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name varchar(255),
+    email varchar(255),
+    username varchar(255),
+    password varchar(255)
 );
 
--- Insertar datos solo si no existen
-INSERT IGNORE INTO favorite_colors (name, color)
-VALUES
-  ('Lancelot', 'blue'),
-  ('Galahad', 'yellow');
+CREATE TABLE product (
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100),
+    descripcion TEXT,
+    precio DECIMAL(10, 2)
+);
+
+INSERT INTO users VALUES(null, "juan", "juan@gmail.com", "juan", "123"),
+    (null, "maria", "maria@gmail.com", "maria", "456");
+
+INSERT INTO product VALUES(null,'Laptop', 'Laptop de última generación', 1000.00),
+(null,'Teléfono', 'Teléfono inteligente con cámara de alta resolución', 800.00),
+(null,'Auriculares', 'Auriculares inalámbricos de alta calidad', 150.00),
+(null,'Tablet', 'Tablet con pantalla HD', 300.00),
+(null,'Smartwatch', 'Smartwatch con monitoreo de salud', 200.00);
 
 -- Crear el usuario de replicación y otorgar privilegios
 CREATE USER IF NOT EXISTS 'repl'@'%' IDENTIFIED BY 'password';
