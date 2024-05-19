@@ -7,4 +7,7 @@ sudo apt update
 sudo apt install mysql-server -y
 sudo systemctl start mysql.service
 
-sudo mysql -h localhost -u root -proot < /home/vagrant/init.sql
+# Copiar la configuración personalizada de MySQL
+echo "------------- copiando configuración personalizada de MySQL -------------"
+sudo cp /home/vagrant/my.cnf /etc/mysql/my.cnf
+sudo systemctl restart mysql.service
