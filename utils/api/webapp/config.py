@@ -1,5 +1,5 @@
 class Config:
-    MYSQL_HOST = '192.168.60.3'
+    MYSQL_HOST = '192.168.60.4'
     MYSQL_USER = 'repl'
     MYSQL_PASSWORD = 'password'
     MYSQL_DB = 'myflaskapp'

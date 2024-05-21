@@ -26,15 +26,13 @@ http {
 
     include /etc/nginx/conf.d/*.conf;
     include /etc/nginx/sites-enabled/*;
-
-    
 }
 
 stream {
     upstream mysql_backend {
-        server 192.168.60.4:3306 max_fails=3 fail_timeout=30s;
-        server 192.168.60.5:3306 max_fails=3 fail_timeout=30s;
-        server 192.168.60.6:3306 max_fails=3 fail_timeout=30s;
+        server 192.168.60.4:3306;
+        server 192.168.60.5:3306;
+        server 192.168.60.6:3306;
     }
 
     server {
@@ -59,9 +57,6 @@ server {
     }
 }
 EOL
-
-# Habilitar la configuración de Flask en Nginx
-sudo ln -s /etc/nginx/sites-available/flask /etc/nginx/sites-enabled/
 
 # Reiniciar Nginx para aplicar las configuraciones
 sudo systemctl restart nginx
