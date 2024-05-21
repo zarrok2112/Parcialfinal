@@ -39,7 +39,7 @@ Vagrant.configure("2") do |config|
   config.vm.define :webserver do |webserver|
     webserver.vm.box = "bento/ubuntu-22.04"
     webserver.vm.network :private_network, ip: "192.168.60.3"
-    webserver.vm.provision "file", source: "./utils/api/webapp", destination: "/home/vagrant/webapp"
+    webserver.vm.provision "file", source: "./utils/api/", destination: "/home/vagrant/webapp"
     webserver.vm.provision "shell", path: "./scripts/script_nginx.sh"
     webserver.vm.provision "shell", path: "./scripts/script_webapp.sh"
   end
