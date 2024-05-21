@@ -1,2 +1,0 @@
-flask app en vez de run
-cambiar api folder
