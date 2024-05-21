@@ -23,7 +23,7 @@
    ```
 3. Correr el aplicativo web
    ```sh
-   export FLASK_APP=/home/vagrant/webapp/run.py
+   export FLASK_APP=/home/vagrant/webapp/app.py
    python3 -m flask run --host=0.0.0.0
    ```
 4. Acceder a la página pegando la dirección en el navegador
