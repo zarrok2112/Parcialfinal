@@ -1,7 +1,7 @@
+# product_controller.py
 from flask import Blueprint, request, jsonify
-from users.models.db import db
-
-from products.models.products_model import Product
+from app import db
+from products_model import Product
 
 product_controller = Blueprint('product_controller', __name__)
 
